@@ -40,8 +40,8 @@ This project is built using **Spring Boot**, which simplifies the development of
 
 ## Dependencies
 
-- **Spring Boot**: Version 2.3.4
-- **Java/JAR**: JDK 11
+- **Spring Boot**: Version 3.2.4
+- **JDK/JAR**: 21
 - **Other Dependencies**: Refer to the `pom.xml` file for additional libraries used.
 
 ## Note
