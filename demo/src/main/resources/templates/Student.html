@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>课表界面</title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #f2f2f2;
+        color: #333;
+      }
+      
+      h1 {
+        text-align: center;
+      }
+      
+      div {
+        margin: 20px 0;
+      }
+      
+      label {
+        font-weight: bold;
+      }
+      
+      input[type='text'] {
+        padding: 5px;
+        border-radius: 3px;
+        border: none;
+        box-shadow: 0 0 2px #ccc;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }
+      /* 侧边栏样式 */
+      .side-nav {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px 0 0 10px;
+        padding: 10px;
+        z-index: 1000;
+      }
+      
+      .side-nav a {
+        text-align: center;
+        color: white;
+        padding: 10px;
+        margin: 5px 0;
+        margin-bottom: 10px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      
+      .side-nav a:hover {
+        background: #007bff;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 侧边栏 -->
+    <div class="side-nav">
+      <a>课表</a><br><br>
+      <a th:href="@{/Student/{id}/StudentChoose(id=${ID})}">选课</a>
+    </div>
+    <h1>课程表</h1>
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>课程编号</th>
+          <th>课程名称</th>
+          <th>开课时间</th>
+          <th>任课教师</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="Info : ${userMap}" th:object="${Info}">
+          <td th:text="*{key.id}"></td>
+          <td th:text="*{key.Cname}"></td>
+          <td th:text="*{key.Cterm}"></td>
+          <td th:text="*{value.Tname}"></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>学生信息</h1>
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>学号</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>年龄</th>
+          <th>班级</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:object="${Student}">
+          <td th:text="*{Snum}"></td>
+          <td th:text="*{Sname}"></td>
+          <td th:text="*{Ssex}"></td>
+          <td th:text="*{Sage}"></td>
+          <td th:text="*{Sclass}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

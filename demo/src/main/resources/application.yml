@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.sqlite.JDBC
+    url: "jdbc:sqlite:D:\\JavaProject\\JPA_StudentManegement\\demo\\DataBase\\db.sqlite3"
+  thymeleaf:
+    cache: false
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+      

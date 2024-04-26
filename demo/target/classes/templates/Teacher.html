@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>老师界面</title>
+    <style>
+      body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background-color: #f2f2f2;
+        color: #333;
+      }
+      
+      h1 {
+        text-align: center;
+      }
+      
+      div {
+        margin: 20px 0;
+      }
+      
+      label {
+        font-weight: bold;
+      }
+      
+      input[type='text'] {
+        padding: 5px;
+        border-radius: 3px;
+        border: none;
+        box-shadow: 0 0 2px #ccc;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }
+      /* 侧边栏样式 */
+      .side-nav {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 10px 0 0 10px;
+        padding: 10px;
+        z-index: 1000;
+      }
+      
+      .side-nav button {
+        text-align: center;
+        color: white;
+        padding: 10px;
+        margin: 5px 0;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      
+      .side-nav button:hover {
+        background: #007bff;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>选课信息表</h1>
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>课程名称</th>
+          <th>开课时间</th>
+          <th>选课学生名单</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="Info : ${userMap}" th:object="${Info}">
+          <td th:text="*{key.Cname}"></td>
+          <td th:text="*{key.Cterm}"></td>
+          <td><p th:each="student : ${Info.value}" th:text="${student.snum}+' '+${student.sname}"></p></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>教师信息</h1>
+    <table id="courseTable">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>性别</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:object="${Teacher}">
+          <td th:text="*{Tname}"></td>
+          <td th:text="*{Tsex}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
