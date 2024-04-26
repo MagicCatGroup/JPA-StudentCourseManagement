@@ -1,4 +1,4 @@
-# JPA-StudentManagement
+# JPA-StudentCourseManagement
 This project is a simple **Student Course Management System** implemented using **Java Persistence API (JPA)**. It allows students to enroll in courses, view their class schedules, and provides basic functionality for managing student-course relationships.
 
 ## Entity Classes
